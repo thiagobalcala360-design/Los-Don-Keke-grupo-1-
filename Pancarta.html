@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pancarta de Ideas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #ffffff;
+    }
+
+    .contenedor-principal {
+      display: flex;
+      gap: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .cuadro {
+      border: 8px double #000000;
+      border-collapse: collapse;
+    }
+
+    .cuadro td {
+      border: 6px double #000000;
+      padding: 100px 50px;
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: bold;
+      min-width: 320px;
+      min-height: 160px;
+    }
+
+    .panel-lateral {
+      width: 0;
+      overflow: hidden;
+      transition: all 0.6s ease;
+      opacity: 0;
+      background: white;
+      border: 4px solid #000;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .panel-lateral.activo {
+      width: 420px;
+      opacity: 1;
+    }
+
+    .globo {
+      border: 3px solid #000000;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: #000000;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 160px;
+      font-size: 1.2rem;
+      padding: 15px;
+      border: 2px solid #ffffff;
+      border-radius: 12px;
+      resize: vertical;
+    }
+
+    .botones-inferiores {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    button {
+      padding: 14px 32px;
+      margin: 0 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .btn-principal {
+      background: #000;
+      color: white;
+    }
+
+    .btn-siguiente {
+      background: #3c2feb;
+      color: white;
+    }
+
+    .btn-siguiente:hover {
+      background: #0050cc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor-principal">
+    
+    
+    <div>
+      <table class="cuadro" id="tabla">
+        <tr>
+          <td id="celda1">1</td>
+          <td id="celda2">2</td>
+        </tr>
+        <tr>
+          <td id="celda3">3</td>
+          <td id="celda4">4</td>
+        </tr>
+      </table>
+<div class="botones-inferiores">
+  <button class="btn-principal" onclick="iniciarEdicion()">+</button>
+  
+  
+  <button onclick="limpiarParteEspecifica()" 
+          style="padding: 14px 32px; font-size: 1.2rem; font-weight: bold; background: #d32f2f; color: white; border: none; border-radius: 10px; cursor: pointer; margin-left: 15px;">
+    -
+  </button>
+</div>
+    </div>
+     
+    <div class="panel-lateral" id="panelLateral">
+      <h2 id="tituloPaso" style="text-align:center; margin-top:0;">1 de 4</h2>
+      
+      <div class="globo">
+        <label id="labelParte">Arriba Izquierda</label>
+        <textarea id="textoActual" placeholder="Escribe el texto aquí..."></textarea>
+      </div>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button class="btn-siguiente" id="btnSiguiente" onclick="siguientePaso()">Siguiente →</button>
+        
+      </div>
+    </div>
+
+
+  </div>
+
+  <script>
+    let pasoActual = 1;
+    const textos = ["", "", "", ""]; 
+
+    function iniciarEdicion() {
+      pasoActual = 1;
+      document.getElementById('panelLateral').classList.add('activo');
+      actualizarPaso();
+    }
+
+    function limpiarParteEspecifica() {
+  const parte = prompt("¿Qué parte quieres limpiar?\n\nIngresa el número:\n1 = 1\n2 = 2\n3 = 3\n4 = 4", "");
+  
+  if (parte === null) return; 
+
+  const num = parseInt(parte);
+  
+  if (num >= 1 && num <= 4) {
+    if (confirm(`¿Estás seguro de limpiar el cuadro ${num}?`)) {
+      document.getElementById(`celda${num}`).innerHTML = `PARTE ${num}`;
+    }
+  } else {
+    alert("Por favor ingresa un número entre 1 y 4.");
+  }
+}
+
+    function actualizarPaso() {
+      document.getElementById('tituloPaso').textContent = `Paso ${pasoActual} de 4`;
+      document.getElementById('labelParte').textContent = `${pasoActual}️⃣ Parte ${pasoActual} - ${getPosicion(pasoActual)}`;
+      document.getElementById('textoActual').value = textos[pasoActual-1];
+    }
+
+    function getPosicion(n) {
+      if (n === 1) return "Arriba Izquierda";
+      if (n === 2) return "Arriba Derecha";
+      if (n === 3) return "Abajo Izquierda";
+      if (n === 4) return "Abajo Derecha";
+    }
+
+    function siguientePaso() {
+      
+      textos[pasoActual-1] = document.getElementById('textoActual').value;
+
+      
+      document.getElementById(`celda${pasoActual}`).innerHTML = textos[pasoActual-1] || `PARTE ${pasoActual}`;
+
+      if (pasoActual < 4) {
+        pasoActual++;
+        actualizarPaso();
+      } else {
+        alert("¡Listo! Todas los cuadros han sido actualizadas.");
+      }
+    }
+  </script>
+  
+<h1>holaaaaa</h1>
+  
+</body>
+</html>
