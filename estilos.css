@@ -1,0 +1,149 @@
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 20px;
+      background: #255686;
+    }
+
+    .contenedor-principal {
+      display: flex;
+      gap: 40px;
+      max-width: 100%;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+
+    .cuadro {
+      border: 10px double #222;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .cuadro td {
+      border: 6px double #222;
+      padding: 60px 40px;
+      text-align: center;
+      font-size: 1.65rem;
+      font-weight: bold;
+      width: 200px ;     
+      height: 220px ;
+      min-width: 370px;
+      min-height: 200px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      vertical-align: middle;
+    }
+
+    .cuadro td:hover {
+      background: #f0f0f0;
+    }
+
+    .panel-lateral {
+      width: 0;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      opacity: 0;
+      background: white;
+      border: 5px solid #222;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      min-height: 400px;
+    }
+
+    .panel-lateral.activo {
+      width: 440px;
+      opacity: 1;
+    }
+
+    .globo {
+      border: 3px solid #222;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 25px;
+      background: #111;
+      color: white;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 180px;
+      font-size: 1.25rem;
+      padding: 18px;
+      border: 2px solid #555;
+      border-radius: 12px;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    .botones-inferiores {
+      margin-top: 30px;
+      text-align: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 2% 4%;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-principal { background: #000; color: white; }
+    .btn-principal:hover { background: #333; }
+
+    .btn-siguiente { background: #3c2feb; color: white; max-height: 4%;}
+    .btn-siguiente:hover { background: #2a1fd1;  }
+
+    .btn-anterior { 
+      background: #666; 
+      color: white; 
+    }
+    .btn-anterior:hover { 
+      background: #555; 
+    }
+
+
+
+.contenedor-adjuntar {
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.btn-adjuntar {
+    background-color: #e0e0e0; 
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 14px;
+}
+
+.btn-adjuntar:hover {
+    background-color: #d0d0d0; /* Efecto al pasar el mouse */
+}
+
+/* Estilo para el texto que avisa qué archivo se subió */
+.texto-archivo {
+    font-size: 12px;
+    color: #666;
+    font-family: sans-serif;
+}

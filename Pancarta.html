@@ -3,130 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pancarta de Ideas</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 20px;
-      background: #255686;
-    }
-
-    .contenedor-principal {
-      display: flex;
-      gap: 40px;
-      max-width: 1350px;
-      margin: 0 auto;
-      align-items: flex-start;
-    }
-
-    .cuadro {
-      border: 10px double #222;
-      background: white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-
-    .cuadro td {
-      border: 6px double #222;
-      padding: 60px 40px;
-      text-align: center;
-      font-size: 1.65rem;
-      font-weight: bold;
-      width: 200px ;     
-      height: 220px ;
-      min-width: 370px;
-      min-height: 200px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      vertical-align: middle;
-    }
-
-    .cuadro td:hover {
-      background: #f0f0f0;
-    }
-
-    .panel-lateral {
-      width: 0;
-      overflow: hidden;
-      transition: all 0.5s ease;
-      opacity: 0;
-      background: white;
-      border: 5px solid #222;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-      min-height: 400px;
-    }
-
-    .panel-lateral.activo {
-      width: 440px;
-      opacity: 1;
-    }
-
-    .globo {
-      border: 3px solid #222;
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 25px;
-      background: #111;
-      color: white;
-    }
-
-    label {
-      font-weight: bold;
-      font-size: 1.4rem;
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    textarea {
-      width: 100%;
-      height: 180px;
-      font-size: 1.25rem;
-      padding: 18px;
-      border: 2px solid #555;
-      border-radius: 12px;
-      resize: vertical;
-      font-family: inherit;
-    }
-
-    .botones-inferiores {
-      margin-top: 30px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    button {
-      padding: 14px 28px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-principal { background: #000; color: white; }
-    .btn-principal:hover { background: #333; }
-
-    .btn-siguiente { background: #3c2feb; color: white; }
-    .btn-siguiente:hover { background: #2a1fd1; }
-
-    .btn-anterior { 
-      background: #666; 
-      color: white; 
-    }
-    .btn-anterior:hover { 
-      background: #555; 
-    }
-  </style>
+  <title>Pancarta de Ideas</title> 
+  <link rel="stylesheet" href="estilos.css">
+  <script src="script.js"></script>
 </head>
 <body>
 
   <div class="contenedor-principal">
-    
+    <header>
+      <nav>
+
+      </nav>
+    </header>
+
     <div>
       <table class="cuadro" id="tabla">
         <tr>
@@ -165,121 +54,14 @@
         <button class="btn-siguiente" id="btnSiguiente" onclick="siguientePaso()">
           Siguiente →
         </button>
+<div class="contenedor-adjuntar">
+    <label for="input-imagen" class="btn-adjuntar">
+      Adjuntar Imagen
+    </label>
+    <input type="file" id="input-imagen" accept="image/*" style="display: none;">
+    <span id="nombre-archivo" class="texto-archivo">Ningún archivo seleccionado</span>
+</div>
       </div>
-    </div>
-
-  </div>
-
- <script>
-    let pasoActual = 1;
-    let textos = ["", "", "", ""];
-    const MAX_RENGLONES = 6;
-
-    function iniciarEdicion() {
-      pasoActual = 1;
-      document.getElementById('panelLateral').classList.add('activo');
-      actualizarPaso();
-    }
-
-    function editarCelda(num) {
-      pasoActual = num;
-      document.getElementById('panelLateral').classList.add('activo');
-      actualizarPaso();
-    }
-
-    function actualizarPaso() {
-      document.getElementById('numeroPaso').textContent = pasoActual;
-      document.getElementById('labelParte').textContent = getPosicion(pasoActual);
-      
-      const textarea = document.getElementById('textoActual');
-      textarea.value = textos[pasoActual-1] || "";
-      
-      textarea.focus();
-      actualizarContador();
-
-      document.getElementById('btnAnterior').style.display = pasoActual > 1 ? 'inline-block' : 'none';
-    }
-
-    function getPosicion(n) {
-      const posiciones = ["Arriba Izquierda", "Arriba Derecha", "Abajo Izquierda", "Abajo Derecha"];
-      return posiciones[n-1];
-    }
-
-    function actualizarContador() {
-      const textarea = document.getElementById('textoActual');
-      const lineas = (textarea.value.match(/\n/g) || []).length + 1; // Cuenta correctamente los saltos de línea
-      
-      const contador = document.getElementById('contador');
-      contador.textContent = `${lineas} / ${MAX_RENGLONES} renglones`;
-      
-      if (lineas >= MAX_RENGLONES) {
-        contador.style.color = '#d32f2f';
-      } else if (lineas >= MAX_RENGLONES - 1) {
-        contador.style.color = '#ff9800';
-      } else {
-        contador.style.color = '#888';
-      }
-    }
-
-    function limitarRenglones() {
-      const textarea = document.getElementById('textoActual');
-      let lineas = (textarea.value.match(/\n/g) || []).length + 1;
-      
-      if (lineas > MAX_RENGLONES) {
-        // Cortar las líneas extras
-        const lineasArray = textarea.value.split('\n');
-        textarea.value = lineasArray.slice(0, MAX_RENGLONES).join('\n');
-      }
-      actualizarContador();
-    }
-
-    function guardarTextoActual() {
-      const textarea = document.getElementById('textoActual');
-      textos[pasoActual-1] = textarea.value.trim();
-      
-      const celda = document.getElementById(`celda${pasoActual}`);
-      celda.innerHTML = textos[pasoActual-1] 
-        ? `<div style="font-size:2rem; opacity:0.25; margin-bottom:8px;">${pasoActual}</div>${textos[pasoActual-1]}`
-        : pasoActual;
-    }
-
-    function siguientePaso() {
-      guardarTextoActual();
-      if (pasoActual < 4) {
-        pasoActual++;
-        actualizarPaso();
-      } else {
-        document.getElementById('panelLateral').classList.remove('activo');
-        alert("✅ ¡Pancarta completada!");
-      }
-    }
-
-    function anteriorPaso() {
-      if (pasoActual > 1) {
-        guardarTextoActual();
-        pasoActual--;
-        actualizarPaso();
-      }
-    }
-
-    function limpiarTodo() {
-      if (confirm("¿Estás seguro de borrar toda la pancarta?")) {
-        textos = ["", "", "", ""];
-        for (let i = 1; i <= 4; i++) {
-          document.getElementById(`celda${i}`).innerHTML = i;
-        }
-      }
-    }
-
-    // Eventos
-    document.addEventListener('DOMContentLoaded', () => {
-      const textarea = document.getElementById('textoActual');
-      
-      textarea.addEventListener('input', limitarRenglones);
-      textarea.addEventListener('keyup', limitarRenglones);
-      textarea.addEventListener('paste', () => setTimeout(limitarRenglones, 10));
-    });
-</script>
 
 </body>
 </html>
