@@ -35,11 +35,8 @@ body {
   vertical-align: middle;
 }
 
-.cuadro td:hover {
-  background: #f0f0f0;
-}
-
 .panel-lateral {
+  position: relative;       
   width: 0;
   overflow: hidden;
   transition: all 0.5s ease;
@@ -49,13 +46,22 @@ body {
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-  min-height: 400px;
-  margin-top: 150px;
+  min-height: 520px;      
+  box-sizing: border-box;
+  margin-top: 120px;
 }
 
 .panel-lateral.activo {
   width: 440px;
   opacity: 1;
+}
+
+.panel-lateral h2 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #222;
 }
 
 .globo {
@@ -65,91 +71,122 @@ body {
   margin-bottom: 25px;
   background: #111;
   color: white;
+  box-sizing: border-box;
 }
 
-label {
+.globo label {
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   display: block;
   margin-bottom: 12px;
+  color: white;
 }
 
 textarea {
   width: 100%;
-  height: 180px;
-  font-size: 1.25rem;
-  padding: 18px;
+  height: 140px;           
+  font-size: 1.2rem;
+  padding: 14px;
   border: 2px solid #555;
   border-radius: 12px;
-  resize: vertical;
+  resize: none;            
   font-family: inherit;
-}
-
-.botones-inferiores {
-  margin-top: 15px; 
-  display: flex;
-  justify-content: flex-start;
-  gap: 12px;
-  margin-left: 410px;
-}
-
-button {
-  padding: 2% 4%;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btn-principal { background: #000; color: white; }
-.btn-principal:hover { background: #333; }
-
-.btn-siguiente { background: #3c2feb; color: white; max-height: 4%;}
-.btn-siguiente:hover { background: #2a1fd1;  }
-
-.btn-anterior { 
-  background: #666; 
-  color: white; 
-}
-.btn-anterior:hover { 
-  background: #555; 
+  background: #fff;
+  color: #222;
+  box-sizing: border-box;
 }
 
 .contenedor-adjuntar {
-  margin-top: 20px; 
+  margin-top: 20px;        
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-adjuntar {
   background-color: #e0e0e0; 
   color: #333;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;       
+  border: 2px solid #222;
+  border-radius: 10px;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
-  font-size: 14px;
+  width: 100%;              
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
 }
 
 .btn-adjuntar:hover {
   background-color: #d0d0d0;
 }
 
+.btn-adjuntar:active {
+  transform: scale(0.98);   
+}
+
 .texto-archivo {
-  font-size: 12px;
+  font-size: 0.85rem;
   color: #666;
   font-family: sans-serif;
+  margin-top: 6px;
 }
 
-.cuadro td.celda-borrado:hover {
-  background: rgba(211, 47, 47, 0.35) ;
+.navegacion-panel {
+  position: absolute;
+  bottom: 25px;             
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between; 
+  gap: 15px;
 }
 
+.navegacion-panel button {
+  padding: 12px 24px;      
+  font-size: 1.05rem;
+  font-weight: bold;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;               
+  box-sizing: border-box;
+}
+
+.btn-anterior { 
+  background: #666; 
+  color: white; 
+  font-size: 20px;
+}
+
+.btn-anterior:hover { 
+  background: #555; 
+}
+
+.btn-siguiente { 
+  background: #3c2feb; 
+  color: white; 
+  font-size: 20px;
+}
+
+.btn-siguiente:hover { 
+  background: #2a1fd1;  
+}
+
+.botones-zoom {  
+  width: 300px;       
+  height: 30px;      
+  display: inline-flex;
+  gap: 15px;
+  margin-top: 20px;
+  margin-left: 440px;
+}
 
 .barra-yahoo {
   position: absolute;  
@@ -253,3 +290,4 @@ button {
 
   }
 }
+
