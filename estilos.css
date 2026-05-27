@@ -16,6 +16,8 @@ body {
   border: 10px double #222;
   background: white;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin-top: 100px;
+  margin-left: 0px;
 }
 
 .cuadro td {
@@ -48,6 +50,7 @@ body {
   padding: 30px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.2);
   min-height: 400px;
+  margin-top: 150px;
 }
 
 .panel-lateral.activo {
@@ -83,11 +86,11 @@ textarea {
 }
 
 .botones-inferiores {
-  margin-top: 30px;
-  text-align: center;
-  justify-content: center;
+  margin-top: 15px; 
+  display: flex;
+  justify-content: flex-start;
   gap: 12px;
-  flex-wrap: wrap;
+  margin-left: 410px;
 }
 
 button {
@@ -149,6 +152,10 @@ button {
 
 
 .barra-yahoo {
+  position: absolute;  
+  top: 0;
+  left: 0;
+  right: 0;            
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,6 +164,7 @@ button {
   border-bottom: 1px solid #e0e4e9;
   width: 100%;
   box-sizing: border-box;
+  z-index: 100;        
 }
 
 .yahoo-logo a {
@@ -241,6 +249,7 @@ button {
   .yahoo-buscador {
     width: 100%;
     margin: 0;
-    max-width: 100%;
+    max-width: 800px;
+
   }
 }
