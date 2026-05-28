@@ -1,7 +1,7 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 20px;
-  background: #255686;
+  background: #030A8C;
 }
 
 .contenedor-principal {
@@ -204,25 +204,16 @@ textarea {
   z-index: 100;        
 }
 
-.yahoo-logo a {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: #6001d2;
-  text-decoration: none;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-.yahoo-buscador {
-  flex: 1;
-  max-width: 600px;
-  margin: 0 20px;
-}
-
-.yahoo-buscador form {
+.Tecnica {
   display: flex;
-  border: 2px solid #6001d2;
-  border-radius: 4px 20px 20px 4px; 
-  overflow: hidden;
+  align-items: center;
+  margin-right: 15px; 
+}
+
+.Tecnica img {
+  height: 70px; 
+  width: auto;   
+  display: block;
 }
 
 .yahoo-buscador input[type="text"] {
@@ -231,20 +222,6 @@ textarea {
   font-size: 1rem;
   border: none;
   outline: none;
-}
-
-.yahoo-buscador .btn-buscar {
-  background-color: #6001d2;
-  color: white;
-  border: none;
-  padding: 0 24px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background 0.2s;
-}
-
-.yahoo-buscador .btn-buscar:hover {
-  background-color: #4b00a7;
 }
 
 .yahoo-opciones {
@@ -261,33 +238,22 @@ textarea {
 }
 
 .yahoo-opciones a:hover {
-  color: #6001d2;
+  color: #030A8C;
 }
 
 .yahoo-opciones .btn-login {
-  border: 2px solid #6001d2;
+  border: 2px solid #030A8C;
   border-radius: 20px;
   padding: 6px 18px;
-  color: #6001d2;
+  color: #030A8C;
   transition: all 0.2s;
 }
 
 .yahoo-opciones .btn-login:hover {
-  background-color: #6001d2;
+  background-color: #030A8C;
   color: white;
 }
 
-@media (max-width: 768px) {
-  .barra-yahoo {
-    flex-direction: column;
-    gap: 12px;
-    padding: 12px;
-  }
-  .yahoo-buscador {
-    width: 100%;
-    margin: 0;
-    max-width: 800px;
 
-  }
-}
+
 
